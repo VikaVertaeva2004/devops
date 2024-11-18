@@ -1,0 +1,17 @@
+html+jinja
+{% extends 'base.html' %}
+
+{% block title %}
+create
+{% endblock %}
+
+{% block body %}
+<h1>create</h1>
+<form method="post" class="form-control">  <!-- Открывающий тег -->
+    <input type="text" name="title" placeholder="vvedite zagolovok" class="form-control"><br>
+    <button class="btn btn-success" type="submit">Добавить</button>
+</form>  <!-- Закрывающий тег -->
+{% endblock %}
+
+
+

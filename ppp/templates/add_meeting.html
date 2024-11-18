@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add meeting
+{% endblock %}
+
+{% block body %}
+<body>
+    <h1>Schedule a Meeting</h1>
+    <form action="/submit_meeting" method="post">
+        <label for="commission_id">Commission ID:</label><br>
+        <input type="number" id="commission_id" name="commission_id" required><br><br>
+
+        <label for="datetime">Дата и время:</label><br>
+        <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+
+        <label for="location">Локация:</label><br>
+        <input type="text" id="location" name="location"><br><br>
+
+        <label for="attendees">Участники (через запятую):</label><br>
+        <textarea id="attendees" name="attendees"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+{% endblock %}

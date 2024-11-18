@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}
+Add Commission
+{% endblock %}
+
+{% block body %}
+<h1>Add New Commission</h1>
+<form action="" method="post">
+    <label for="name">Commission Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="chairperson_id">Chairperson:</label><br>
+    <select id="chairperson_id" name="chairperson_id">
+        <option value="" disabled selected>Select a Chairperson</option>  <!-- Placeholder -->
+        {% for member in members %}
+            <option value="{{ member.id }}">{{ member.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Members:</label><br>
+    {% for member in members %}
+        <input type="checkbox" id="member_{{ member.id }}" name="members" value="{{ member.id }}">
+        <label for="member_{{ member.id }}">{{ member.name }}</label><br>
+    {% endfor %}
+
+    <input type="submit" value="Add Commission">
+</form>
+{% endblock %}

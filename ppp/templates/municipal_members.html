@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список членов муниципалитета
+{% endblock %}
+
+{% block body %}
+<h1>Члены муниципалитета</h1>
+<ul>
+    {% for member, commissions in member_commissions.items() %}
+    <li>
+        <strong>{{ member.name }}</strong>
+        <ul>
+            {% for commission in commissions %}
+            <li>{{ commission.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

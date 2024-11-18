@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Количество заседаний
+{% endblock %}
+
+{% block body %}
+<h1>Количество заседаний для комиссий</h1>
+<form method="post">
+    <label for="start_date">Начальная дата:</label>
+    <input type="date" name="start_date" required>
+
+    <label for="end_date">Конечная дата:</label>
+    <input type="date" name="end_date" required>
+
+    <button type="submit">Проверить</button>
+</form>
+
+{% if meeting_counts %}
+    <h2>Количество заседаний:</h2>
+    <ul>
+        {% for commission, count in meeting_counts %}
+            <li>{{ commission }} - Количество заседаний: {{ count }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+comissions
+{% endblock %}
+
+{% block body %}
+    <h1>List of Commissions</h1>
+    <a href="{{ url_for('add_comission') }}">Add Commission</a>
+    <ul>
+        {% for commission in commissions %}
+    <li>
+        <strong>{{ commission.name }}</strong> - Chairperson: {{ commission.chairperson.name if commission.chairperson else 'None' }}
+        <ul>
+            <li><strong>Members:</strong></li>
+            <ul>
+                {% for membership in commission.Memberships %}
+                    <li>{{ membership.member.name }}
+                        {% if membership.start_date %} (from {{ membership.start_date }}) {% endif %}
+                        {% if membership.end_date %} (to {{ membership.end_date }}) {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </ul>
+    </li>
+{% endfor %}
+
+    </ul>
+
+{% endblock %}
