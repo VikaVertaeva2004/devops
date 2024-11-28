@@ -5,7 +5,15 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ppp.db'
+params = {
+    "username": "root",
+    "password": "password",
+    "db_name": "test",
+    "db_url": "192.168.1.2",
+}
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{params.get("username")}:{params.get("password")}@{params.get("db_url")}/{params.get("db_name")}'
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
